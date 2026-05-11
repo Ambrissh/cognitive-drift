@@ -181,5 +181,4 @@ https://cognitive-drift-demo.vercel.app
 # Author
 
 Ambrissh
-Physics undergraduate at IISER Berhampur
-Interested in mechanistic interpretability, AI systems, and observability tooling.
+
