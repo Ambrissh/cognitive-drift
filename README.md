@@ -1,36 +1,185 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cognitive Drift
 
-## Getting Started
+### Real-time observability for LLM uncertainty and reasoning instability.
 
-First, run the development server:
+Cognitive Drift visualizes how a language model behaves while generating responses in real time.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Instead of only showing the final answer, the system exposes *reasoning stability*, *uncertainty fluctuations*, and *potential hallucination-risk zones* during token generation.
+
+The project explores a simple idea:
+
+> *What if we could monitor an LLM the same way we monitor a heartbeat or system telemetry?*
+
+---
+
+# Why this exists
+
+Large language models often produce fluent answers even when uncertain.
+
+Most interfaces hide this uncertainty completely.
+
+Cognitive Drift attempts to make that hidden behavior visible by attaching a live observability layer to streaming inference.
+
+The goal is not to judge correctness perfectly.
+
+The goal is to expose:
+
+* instability,
+* confidence shifts,
+* and reasoning drift
+  as generation happens.
+
+---
+
+# Features
+
+* **Streaming AI responses**
+* **Live entropy / uncertainty graph**
+* **Reasoning stability meter**
+* **Hallucination-risk visualization**
+* **Real-time observability UI**
+* **Graceful fallback mode if model API becomes unavailable**
+
+---
+
+# How it works
+
+```text
+User Prompt
+    ↓
+Streaming LLM Response
+    ↓
+Token-by-token uncertainty estimation
+    ↓
+Live entropy visualization
+    ↓
+Reasoning stability analysis
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+As tokens stream in:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* entropy values are estimated,
+* instability spikes are visualized,
+* and the UI updates continuously.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Higher spikes suggest:
 
-## Learn More
+* increased uncertainty,
+* unstable reasoning trajectories,
+* or hallucination-prone regions.
 
-To learn more about Next.js, take a look at the following resources:
+Lower, flatter regions suggest:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* more stable generation behavior.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Frontend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Next.js
+* React
+* TailwindCSS
+* Recharts
+
+## Backend
+
+* Next.js API Routes
+* Streaming Server-Sent Events (SSE)
+
+## Model
+
+* Gemini API
+
+## Deployment
+
+* Vercel
+
+---
+
+# Design Philosophy
+
+This project intentionally avoids:
+
+* authentication,
+* databases,
+* multi-page architecture,
+* excessive features,
+* over-engineering.
+
+The focus was:
+
+> build the smallest possible version of a compelling AI observability tool.
+
+The core interaction mattered more than polish.
+
+---
+
+# Demo Focus
+
+The system is designed to answer one question clearly:
+
+> *Can we visualize model uncertainty while generation is happening?*
+
+Everything else was intentionally left out.
+
+---
+
+# Future Directions
+
+* Real token-level log probability integration
+* Cross-model observability comparisons
+* Attention-pattern overlays
+* Mechanistic interpretability tooling
+* Long-context drift analysis
+* Developer-facing observability SDK
+
+---
+
+# Local Setup
+
+```bash
+git clone https://github.com/ambrissh/cognitive-drift.git
+
+cd cognitive-drift
+
+npm install
+
+npm run dev
+```
+
+---
+
+# Environment Variables
+
+Create a `.env.local` file:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+---
+
+# Inspiration
+
+Cognitive Drift was inspired by:
+
+* AI observability systems,
+* mechanistic interpretability research,
+* hallucination analysis,
+* and the idea that AI systems should expose uncertainty instead of hiding it.
+
+---
+
+# Live Demo
+
+(Add your deployed Vercel link here)
+
+---
+
+# Author
+
+Ambrissh
+Physics undergraduate at IISER Berhampur
+Interested in mechanistic interpretability, AI systems, and observability tooling.
