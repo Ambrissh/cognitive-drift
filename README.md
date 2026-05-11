@@ -3,6 +3,9 @@
 ### Real-time observability for LLM uncertainty and reasoning instability.
 
 Cognitive Drift visualizes how a language model behaves while generating responses in real time.
+# UI Preview
+
+![Cognitive Drift UI](./public/screenshots/ui.png)
 
 Instead of only showing the final answer, the system exposes *reasoning stability*, *uncertainty fluctuations*, and *potential hallucination-risk zones* during token generation.
 
