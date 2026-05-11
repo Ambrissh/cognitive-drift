@@ -174,7 +174,7 @@ Cognitive Drift was inspired by:
 
 # Live Demo
 
-(Add your deployed Vercel link here)
+https://cognitive-drift-demo.vercel.app
 
 ---
 
